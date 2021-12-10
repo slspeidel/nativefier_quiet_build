@@ -2,9 +2,9 @@
 .DS_Store
 
 # ignore compiled lib files
-# lib*
-# app/lib/*
-# app/dist/*
+lib*
+app/lib/*
+app/dist/*
 built-tests
 
 # commit a placeholder to keep the app/lib directory

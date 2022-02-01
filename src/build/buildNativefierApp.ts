@@ -130,15 +130,15 @@ function trimUnprocessableOptions(options: AppOptions): void {
 export async function buildNativefierApp(
   rawOptions: RawOptions,
 ): Promise<string | undefined> {
-  log.warn(
-    new chalk.Instance().yellowBright.bold(
-      '\n\n    Hi! Nativefier is minimally maintained these days, and needs more hands.\n' +
-        '    If you have the time & motivation, help with bugfixes and maintenance is VERY welcome.\n' +
-        '    Please go to https://github.com/nativefier/nativefier and help how you can. Thanks.\n\n',
-    ),
-  );
+  //log.warn(
+    //new chalk.Instance().yellowBright.bold(
+      //'\n\n    Hi! Nativefier is minimally maintained these days, and needs more hands.\n' +
+        //'    If you have the time & motivation, help with bugfixes and maintenance is VERY welcome.\n' +
+        //'    Please go to https://github.com/nativefier/nativefier and help how you can. Thanks.\n\n',
+    //),
+  //);
 
-  log.info('\nProcessing options...');
+  //log.info('\nProcessing options...');
 
   let finalOutDirectory = rawOptions.out ?? process.cwd();
 
@@ -179,18 +179,18 @@ export async function buildNativefierApp(
     }
   }
 
-  log.info('\nPreparing Electron app...');
+  //log.info('\nPreparing Electron app...');
   const tmpPath = getTempDir('app', 0o755);
   await prepareElectronApp(options.packager.dir, tmpPath, options);
 
-  log.info('\nConverting icons...');
+  //log.info('\nConverting icons...');
   options.packager.dir = tmpPath;
   convertIconIfNecessary(options);
   await copyIconsIfNecessary(options, tmpPath);
 
-  log.info(
-    "\nPackaging... This will take a few seconds, maybe minutes if the requested Electron isn't cached yet...",
-  );
+  //log.info(
+    //"\nPackaging... This will take a few seconds, maybe minutes if the requested Electron isn't cached yet...",
+  //);
   trimUnprocessableOptions(options);
   electronGet.initializeProxy(); // https://github.com/electron/get#proxies
   const appPathArray = await electronPackager(options.packager);
@@ -252,7 +252,7 @@ export async function buildNativefierApp(
     osRunHelp = `the app bundle.`;
   }
   log.info(
-    `App built to ${appPath}, move to wherever it makes sense for you and run ${osRunHelp}`,
+    `App built to ${appPath}`,
   );
 
   return appPath;

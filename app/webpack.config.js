@@ -32,11 +32,5 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'lib'),
   },
-  mode: 'none',
-  devServer: {
-    stats: {
-      assets: false,
-      modules: false
-    }
-  }
+  mode: 'none'
 };

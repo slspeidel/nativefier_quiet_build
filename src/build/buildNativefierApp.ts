@@ -179,18 +179,18 @@ export async function buildNativefierApp(
     }
   }
 
-  //log.info('\nPreparing Electron app...');
+  // log.info('\nPreparing Electron app...');
   const tmpPath = getTempDir('app', 0o755);
   await prepareElectronApp(options.packager.dir, tmpPath, options);
 
-  //log.info('\nConverting icons...');
+  // log.info('\nConverting icons...');
   options.packager.dir = tmpPath;
   convertIconIfNecessary(options);
   await copyIconsIfNecessary(options, tmpPath);
 
-  //log.info(
-    //"\nPackaging... This will take a few seconds, maybe minutes if the requested Electron isn't cached yet...",
-  //);
+  log.info(
+    "\nPackaging... This will take a few seconds, maybe minutes...",
+  );
   trimUnprocessableOptions(options);
   electronGet.initializeProxy(); // https://github.com/electron/get#proxies
   const appPathArray = await electronPackager(options.packager);
